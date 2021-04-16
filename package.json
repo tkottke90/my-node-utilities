@@ -1,0 +1,11 @@
+{
+  "name": "mynodeutils",
+  "version": "1.0.0",
+  "description": "Collection of utilities I use frequently with NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas Kottke <t.kottke90@gmail.com>",
+  "license": "MIT"
+}
