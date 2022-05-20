@@ -8,7 +8,7 @@ const numberFormatter = Intl.NumberFormat('en-US', { minimumIntegerDigits: 3 });
  * @returns 
  */
 function wrapHeaderLine(message, lineSize, prefix = false) {
-  const padding = ' '.repeat(lineSize - 4, - message.length);
+  const padding = ' '.repeat(lineSize - 4 - message.length);
   
   return prefix
     ? `# ${padding}${message} #`
@@ -41,13 +41,13 @@ function drawTerminalHeader({ scriptName, version, author, buildDate }) {
     .map(line => line + 8) // Buffer each line with 6 characters so that the header has some space
     .sort((a, b) => a < b ? 1 : -1);
 
-  const headerWidth = lineSizes < maxWidth ? lineSizes : maxWidth;
+  const headerWidth = lineSizes[0] < maxWidth ? lineSizes[0] : maxWidth;
   const topBottom = '#'.repeat(headerWidth);
 
   const display = [
     topBottom,
     wrapHeaderLine(scriptName, headerWidth),
-    wrapHeaderLine(version, headerWidth),
+    wrapHeaderLine(`  Version: ${version}`, headerWidth),
     wrapHeaderLine('', headerWidth),
     wrapHeaderLine(author, headerWidth, true),
     wrapHeaderLine(`Last Update: ${buildDate}`, headerWidth, true),
